@@ -1,0 +1,71 @@
+.fondo{
+    background-image: url('/assets/fondoSala.jpeg');
+    background-size: cover;
+     background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px; /* espacio entre tarjetas y botón */
+}
+
+.containerInterno {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+/* Para pantallas medianas */
+@media (min-width: 768px) {
+    .containerInterno {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        padding: 50px 30px;
+    }
+}
+
+/* Para pantallas grandes */
+@media (min-width: 1024px) {
+    .containerInterno {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 60px 40px;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .containerInterno {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 30px 15px;
+    }
+}
+
+.boton-comenzar {
+  background: linear-gradient(to right, #0a5eb1, #043a5e); /* degradado azul */
+  color: white;
+  padding: 12px 24px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.boton-comenzar:hover {
+  transform: scale(1.05);
+}
