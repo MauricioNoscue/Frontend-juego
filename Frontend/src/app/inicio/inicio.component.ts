@@ -25,11 +25,12 @@ private router = inject(Router)
 
   onSubmit() {
     if (this.nombre.trim()) {
+this.objeto.name = this.nombre
+    this.servicie.Save(this.objeto).subscribe(op=>{
+      this.router.navigate(['unirse'])
+    })
 
-this.servicie.Save(this.objeto).subscribe(op=>{
-  this.router.navigate(['SalaEspera'])
-})
-
+    console.log(this.objeto)
       console.log('Nombre ingresado:', this.nombre);
       alert(`¡Hola ${this.nombre}! Bienvenido/a`);
     } else {
