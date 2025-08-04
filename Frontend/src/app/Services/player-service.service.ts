@@ -16,6 +16,9 @@ export class PlayerServiceService {
     
     }
 
+    public Save(player:Players){
+      return this.http.post(`${this.urlbase}player`, player);
+    }
     public GetAll():Observable<Players[]>{
       return this.http.get<Players[]>(`${this.urlbase + 'player'}`);
     }
