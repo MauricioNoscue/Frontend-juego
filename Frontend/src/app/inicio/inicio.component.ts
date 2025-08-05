@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms'; // ← Importa FormsModule
 import { PlayerServiceService } from '../Services/player-service.service';
 import { Players } from '../Model/PlayerModel';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-inicio',
@@ -23,20 +25,33 @@ private router = inject(Router)
     name: this.nombre,
   }
 
-  onSubmit() {
-    if (this.nombre.trim()) {
-this.objeto.name = this.nombre
-    this.servicie.Save(this.objeto).subscribe(op=>{
-      this.router.navigate(['unirse'])
-    })
+ onSubmit() {
+  if (this.nombre.trim()) {
+    this.objeto.name = this.nombre;
+    this.servicie.Save(this.objeto).subscribe(op => {
+      this.router.navigate(['unirse']);
+    });
 
-    console.log(this.objeto)
-      console.log('Nombre ingresado:', this.nombre);
-      alert(`¡Hola ${this.nombre}! Bienvenido/a`);
-    } else {
-      alert('Por favor, ingresa tu nombre');
-    }
+    console.log(this.objeto);
+    console.log('Nombre ingresado:', this.nombre);
+
+    Swal.fire({
+      title: `¡Hola ${this.nombre}!`,
+      text: 'Bienvenido/a',
+      icon: 'success',
+      confirmButtonText: 'Continuar'
+    });
+
+  } else {
+    Swal.fire({
+      title: 'Nombre requerido',
+      text: 'Por favor, ingresa tu nombre',
+      icon: 'warning',
+      confirmButtonText: 'OK'
+    });
   }
+}
+
 
   limpiarCampo() {
     this.nombre = '';

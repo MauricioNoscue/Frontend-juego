@@ -17,6 +17,6 @@ export class ModuloUnirseComponent {
   joinStadium(): void {
     this.route.navigate(['SalaEspera',this.selected]);
 
-  
+
   }
 }
