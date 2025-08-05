@@ -1,0 +1,41 @@
+<div class="containerr">
+  <h2>Ronda {{ ronda }}</h2>
+  <div *ngIf="!ganadorFinal">
+    <div *ngIf="turno === jugadorQueEligeAtributo && !atributoSeleccionado">
+      <p><strong>{{ players[turno].name }}</strong>, elige el atributo:</p>
+      <button *ngFor="let attr of atributos" (click)="elegirAtributo(attr)">
+        {{ attr }}
+      </button>
+    </div>
+
+    <div *ngIf="atributoSeleccionado">
+      <p><strong>{{ players[turno].name }}</strong>, elige una carta para atributo <strong>{{ atributoSeleccionado }}</strong>:</p>
+      <div class="zona-cartas">
+        <div
+          class="carta"
+          *ngFor="let carta of cartasJugadorActual"
+          (click)="seleccionarCarta(carta)">
+          {{ carta.code }}
+        </div>
+      </div>
+    </div>
+
+    <div class="zona-central">
+      <div class="campo" *ngFor="let jugada of cartasJugadas">
+        {{ jugada.player.name }} - {{ jugada.carta.code }} - {{ jugada.carta[atributoSeleccionado!] }}
+      </div>
+    </div>
+
+    <div *ngIf="ganadorRonda">
+      <p>🏆 Ganador de la ronda: <strong>{{ ganadorRonda.name }}</strong></p>
+    </div>
+  </div>
+
+  <div *ngIf="ganadorFinal">
+    <h2>🎉 Ganador del juego: {{ ganadorFinal.name }} 🎉</h2>
+    <p>Puntajes finales:</p>
+    <ul>
+      <li *ngFor="let p of players">{{ p.name }} - {{ p.points }} puntos</li>
+    </ul>
+  </div>
+</div>

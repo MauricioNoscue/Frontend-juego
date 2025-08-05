@@ -1,8 +1,11 @@
 <div class="container-fluid fondo">
   <div class="contenido">
-    <div class="containerInterno" >
-      <app-user-card  *ngFor="let user of users" NameUser="user"></app-user-card>
+    <div class="containerInterno">
+      <app-user-card
+        *ngFor="let user of users"
+        [NameUser]="user.name"
+      ></app-user-card>
     </div>
-    <button class="boton-comenzar">comenzar partida</button>
+    <button class="boton-comenzar" (click)="viajar()">comenzar partida</button>
   </div>
 </div>

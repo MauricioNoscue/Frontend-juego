@@ -1,0 +1,44 @@
+<div class="containerr">
+  <!-- Mostrar ronda en el centro superior -->
+  <div class="ronda-actual" style="text-align: center; color: #fff; font-size: 40px;">
+    Ronda {{ rondaActual }}
+  </div>
+
+  <!-- Mostrar turno actual -->
+<div *ngIf="showTurno" class="turno-animado">
+  <h1>Turno de: {{ players[jugadorActualIndex]?.name }}</h1>
+</div>
+
+
+
+  <!-- Jugadores -->
+  <div class="jugador jugador-arriba-centro" *ngIf="players[3]">{{ players[3].name }}</div>
+  <div class="jugador jugador-arriba-izquierda" *ngIf="players[4]">{{ players[4].name }}</div>
+  <div class="jugador jugador-arriba-derecha" *ngIf="players[2]">{{ players[2].name }}</div>
+  <div class="jugador jugador-izquierda-superior" *ngIf="players[0]">{{ players[0].name }}</div>
+  <div class="jugador jugador-izquierda-inferior" *ngIf="players[1]">{{ players[1].name }}</div>
+  <div class="jugador jugador-derecha-superior" *ngIf="players[5]">{{ players[5].name }}</div>
+  <div class="jugador jugador-derecha-inferior" *ngIf="players[6]">{{ players[6].name }}</div>
+
+  <!-- Reloj -->
+
+  <!-- Zona central de campos -->
+  <div class="zona-central">
+    <div class="campo" *ngFor="let c of cartasJugadas">
+      <img [src]="c?.url" class="carta-img" *ngIf="c">
+    </div>
+  </div>
+
+  <!-- Zona inferior con cartas del jugador en turno -->
+  <div class="zona-cartas">
+  <div
+    class="carta"
+    *ngFor="let carta of cartasJugadorActual"
+    [class.usada]="carta.usada"
+    (click)="seleccionarCarta(carta)"
+  >
+    <img [src]="carta.url" width="100">
+  </div>
+</div>
+
+</div>

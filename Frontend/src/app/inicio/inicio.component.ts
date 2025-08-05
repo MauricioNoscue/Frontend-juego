@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // ← Importa FormsModule
+import { PlayerServiceService } from '../Services/player-service.service';
+import { Players } from '../Model/PlayerModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -13,8 +16,21 @@ export class InicioComponent {
 
   constructor() { }
 
+  private servicie = inject(PlayerServiceService)
+private router = inject(Router)
+  objeto :Players ={
+    id: 0,
+    name: this.nombre,
+  }
+
   onSubmit() {
     if (this.nombre.trim()) {
+this.objeto.name = this.nombre
+    this.servicie.Save(this.objeto).subscribe(op=>{
+      this.router.navigate(['unirse'])
+    })
+
+    console.log(this.objeto)
       console.log('Nombre ingresado:', this.nombre);
       alert(`¡Hola ${this.nombre}! Bienvenido/a`);
     } else {

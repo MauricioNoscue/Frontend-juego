@@ -1,17 +1,20 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { Players } from '../Model/PlayerModel';
-import { PlayerServiceService } from '../Services/player-service.service';
+import { Component, inject } from '@angular/core';
+import { SComponent } from '../Components/s/s.component';
+import { Router } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-modulo-unirse',
-  standalone: true,
-  // imports: [],
+  imports: [SComponent, MatFormFieldModule, MatSelectModule],
   templateUrl: './modulo-unirse.component.html',
   styleUrl: './modulo-unirse.component.css',
 })
-export class ModuloUnirseComponent  {
+export class ModuloUnirseComponent {
+  private route = inject(Router);
+  selected = '';
+
   joinStadium(): void {
-    console.log('Unirse al estadio');
-    // Aquí podrías navegar, enviar una solicitud, abrir un modal, etc.
+    this.route.navigate(['SalaEspera', this.selected]);
   }
 }

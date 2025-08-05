@@ -1,8 +1,22 @@
 <div class="containerr">
-  <button class="access-container" (click)="joinStadium()">
+  <div class="access-container">
     <div class="action-side">
-      <img src="../../assets/icono estadio.png" alt="estadio">
-      <span class="join-text">Unirse</span>
+      <img src="/assets/Fondos/icono estadio.png" alt="estadio" />
+
+      <mat-form-field>
+        <mat-label>seleccione la cantidad de jugadores</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option>None</mat-option>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+          <mat-option value="6">6</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <span class="join-text" (click)="joinStadium()">Unirse</span>
     </div>
-  </button>
+  </div>
 </div>

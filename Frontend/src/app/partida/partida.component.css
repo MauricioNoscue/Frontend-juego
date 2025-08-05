@@ -1,0 +1,146 @@
+.containerr {
+  background-image: url("/assets/Fondos/partida.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.jugador {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: gray;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Posiciones de jugadores */
+.jugador-arriba-centro {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.jugador-arriba-izquierda {
+  top: 10px;
+  left: 10px;
+}
+.jugador-arriba-derecha {
+  top: 10px;
+  right: 10px;
+}
+.jugador-izquierda-superior {
+  top: 30%;
+  left: 10px;
+}
+.jugador-izquierda-inferior {
+  bottom: 30%;
+  left: 10px;
+}
+.jugador-derecha-superior {
+  top: 30%;
+  right: 10px;
+}
+.jugador-derecha-inferior {
+  bottom: 30%;
+  right: 10px;
+}
+
+.reloj {
+  position: absolute;
+  top: 10px;
+  right: 50%;
+  transform: translateX(50%);
+  color: white;
+  font-size: 20px;
+}
+
+.zona-central {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.campo {
+  width: 200px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #999;
+}
+
+.zona-cartas {
+  position: absolute;
+  bottom: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carta {
+  width: 100px;
+  height: 100px;
+  background: white;
+  text-align: center;
+  line-height: 100px;
+  cursor: pointer;
+}
+
+.carta-img {
+  width: 100%;
+  height: 100%;
+}
+
+.carta:hover {
+  transform: scale(4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: -100px;
+}
+.carta.usada {
+  opacity: 0.5;
+  pointer-events: none; /* Evita clics */
+  filter: grayscale(100%);
+}
+.turno-animado {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  animation: entradaTurno 2s ease-in-out;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px 50px;
+  border-radius: 20px;
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  pointer-events: none;
+}
+
+@keyframes entradaTurno {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.8);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.9);
+  }
+}
